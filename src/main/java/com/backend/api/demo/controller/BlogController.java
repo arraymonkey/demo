@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -22,6 +23,11 @@ public class BlogController {
     @GetMapping("/blogs/{blogId}")
     public Object getBlog(@PathVariable("blogId") int blog) {
         return blogRepository.findById(blog);
+    }
+
+    @GetMapping("/blogs")
+    public List<Blog> getAllBlog() {
+        return blogRepository.findAll();
     }
 
 }
